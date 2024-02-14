@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\PaysRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PaysRepository::class)]
@@ -20,6 +22,14 @@ class Pays
 
     #[ORM\Column(length: 255)]
     private ?string $nomPays = null;
+
+    #[ORM\OneToMany(targetEntity: Ville::class, mappedBy: 'pays', orphanRemoval: true)]
+    private Collection $ville;
+
+    public function __construct()
+    {
+        $this->ville = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -46,6 +56,36 @@ class Pays
     public function setNomPays(string $nomPays): static
     {
         $this->nomPays = $nomPays;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Ville>
+     */
+    public function getVille(): Collection
+    {
+        return $this->ville;
+    }
+
+    public function addVille(Ville $ville): static
+    {
+        if (!$this->ville->contains($ville)) {
+            $this->ville->add($ville);
+            $ville->setPays($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVille(Ville $ville): static
+    {
+        if ($this->ville->removeElement($ville)) {
+            // set the owning side to null (unless already changed)
+            if ($ville->getPays() === $this) {
+                $ville->setPays(null);
+            }
+        }
 
         return $this;
     }

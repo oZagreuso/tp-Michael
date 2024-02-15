@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr-fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    {# <script src="./assets/vue.global.js"></script>  #}
+    <link rel="stylesheet" href="./assets/pays.css">  
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Pays</h1>
+    </header>
+    <main>
+        <section class="tab">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Code</th>
+                        <th>Nom</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for>
+                        <td>{{ country.flag }}</td>
+                        <td>{{ country.code }}</td>
+                        <td>{{ country.name }}</td>
+                        <td>
+                            <button @click="clickBouton">Détails</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    
+</body>
+</html>

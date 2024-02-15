@@ -3,13 +3,28 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
+use ApiPlatform\Metadata\Delete;
 use App\Repository\PaysRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PaysRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    operations: [
+        new GetCollection(uriTemplate:"/pays"),
+        new Get(uriTemplate:"/pays/{id}"),
+        new Post(uriTemplate:"/pays"),
+        new Put(uriTemplate:"/pays/{id}"),
+        new Delete(uriTemplate:"/pays/{id}")
+    ]
+)
+
+]
 class Pays
 {
     #[ORM\Id]
@@ -17,7 +32,7 @@ class Pays
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 2)]
+    #[ORM\Column(length: 2, options: ['fixed' => true])]
     private ?string $codePays = null;
 
     #[ORM\Column(length: 255)]

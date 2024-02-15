@@ -38,7 +38,6 @@ class Ville
     public function setPays(?Pays $pays): static
     {
         $this->pays = $pays;
-
         return $this;
     }
 
@@ -50,7 +49,6 @@ class Ville
     public function setCodePostalVille(string $codePostalVille): static
     {
         $this->codePostalVille = $codePostalVille;
-
         return $this;
     }
 
@@ -62,7 +60,6 @@ class Ville
     public function setNomVille(string $nomVille): static
     {
         $this->nomVille = $nomVille;
-
         return $this;
     }
 }

@@ -1,37 +1,25 @@
-import { Pays } from "./pays.js";
+import { Pays } from "./Pays.js";
 
 class PaysRepository
 {
-    /** @var {String} apiBaseUrl */
+    
     static apiBaseUrl = 'http://localhost:3000/api';
 
-    /** 
-     * @param {String} chemin  
-     * @param {Object} options
-     * @returns {Array|Object}
-    */
-
-    static async fetchUrl(chemin, options = {})
+    async fetchDataFromApi()
     {
-        let url = PaysRepository.apiBaseUrl + chemin;
-        let response = await fetch(url, options);
-        let jason = await response.json();
-        console.log(url, json);
-        return json;
+        try 
+        {
+            const response = await fetch(PaysRepository.apiBaseUrl + '/pays');
+            const data = await response.json();
+            return data;
+        }
+        catch (error)
+        {
+            console.error('Erreur récupération données depuis l\'API')
+            throw error;
+        }
     }
-
-    /**
-     * 
-     * @param {Number} identifiant
-     * @returns {Object}
-     */
-    static async getPays(identifiant)
-    {
-        let chemin = '/pays/' + identifiant;
-        let json = await PaysRepository.fetchUrl(chemin);
-        let p = new Pays(json);
-        return p;
-    }
+    
 }
 
 export {PaysRepository, Pays}

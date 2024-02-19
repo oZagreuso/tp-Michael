@@ -1,12 +1,13 @@
 class Pays
 {
-    constructor(country)
+    constructor(pays)
     {
-        this.flag = country.flag;
-        this.code = country.code;
-        this.nom = country.name;
+        
+        this.codePays = pays.codePays;
+        this.nomPays = pays.nomPays;
     
     }
+    
 }
 
 export { Pays };

@@ -1,11 +1,12 @@
-import { PaysRepository } from "./PaysRepository.js";
+import { PaysRepository } from "./paysRepository.js";
 import { Pays } from "./Pays.js";
 
 
 const app = {
     data() {
         return {
-            paysList: []
+            paysList: [],
+            selectedPays: null
         }
     },
     async mounted() {
@@ -23,29 +24,17 @@ const app = {
             } catch (error) {
                 console.error('Erreur lors du chargement des données:', error.message);
             }
-        }
-    //     },
-    //     modal() {
-    //     var modal = document.querySelector(".modal");
-    //   var trigger = document.querySelector(".open");
-    //   var closeButton = document.querySelector(".close-button");
-
-    //   function toggleModal() {
-    //     modal.classList.toggle("show-modal");
-    //   }
-
-    //   function windowOnClick(event) {
-    //     if (event.target === modal) {
-    //       toggleModal();
-    //     }
-    //   }
-
-    //   trigger.addEventListener("click", toggleModal);
-    //   closeButton.addEventListener("click", toggleModal);
-    //   window.addEventListener("click", windowOnClick);
-    //     }
-
-        
+        },
+        openModal(event) {
+            let countryId = event.target.dataset.id;
+            this.selectedPays = this.paysList.find(x => x.id == countryId);
+            console.log(this.$refs);
+            this.$refs.modal.style.display = 'block';
+        },
+        closeModal() {
+            this.$refs.modal.style.display ='none';
+        }    
+          
 
     }
 };

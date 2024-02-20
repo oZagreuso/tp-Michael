@@ -14,8 +14,8 @@
         <img src="./assets/img/banner.png">
         <h1>Pays</h1>
     </header>
-    <main>
-        <section id="app">
+    <main id="app">
+        <section>
             <div>
             <table class="table table-success table-striped">
                 <thead>
@@ -31,16 +31,21 @@
                         <td><img :src="'https://flagsapi.com/' + pays.codePays + '/flat/32.png'"></td>
                         <td>{{ pays.codePays }}</td>
                         <td>{{ pays.nomPays }}</td>
-                        <td><a href="#openModal" class="btn btn-outline-success">Détails</a></td>                           
+                        <td><button :data-id="pays.id" @click="openModal" class="btn btn-outline-success">Détails</button></td>                           
                     </tr>
                 </tbody>
             </table>
         </div>
         </section>        
-        <div id="openModal" class="modalDialog">
-            <div>
-                <a href="#close" title="Close" class="close">Fermer</a>       
-            </div>
+        <div id="modal" ref="modal">
+            <article v-if="selectedPays != null">
+                <button id="btn" class="btn btn-outline-danger" @click="closeModal">Fermer</button>
+                <header>
+                    <p>{{ selectedPays.nomPays }}</p>
+                    <img :src="'https://flagsapi.com/' + selectedPays.codePays + '/flat/64.png'" :alt="selectedPays.codePays">
+                    <p>Code ISO: {{ selectedPays.codePays }}</p>
+                </header>
+            </article>          
         </div>
               
     </main>

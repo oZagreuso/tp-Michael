@@ -1,6 +1,7 @@
 import { PaysRepository } from "./PaysRepository.js";
 import { Pays } from "./Pays.js";
 
+
 const app = {
     data() {
         return {
@@ -23,6 +24,29 @@ const app = {
                 console.error('Erreur lors du chargement des données:', error.message);
             }
         }
+    //     },
+    //     modal() {
+    //     var modal = document.querySelector(".modal");
+    //   var trigger = document.querySelector(".open");
+    //   var closeButton = document.querySelector(".close-button");
+
+    //   function toggleModal() {
+    //     modal.classList.toggle("show-modal");
+    //   }
+
+    //   function windowOnClick(event) {
+    //     if (event.target === modal) {
+    //       toggleModal();
+    //     }
+    //   }
+
+    //   trigger.addEventListener("click", toggleModal);
+    //   closeButton.addEventListener("click", toggleModal);
+    //   window.addEventListener("click", windowOnClick);
+    //     }
+
+        
+
     }
 };
 

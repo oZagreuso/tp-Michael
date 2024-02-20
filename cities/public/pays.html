@@ -31,20 +31,18 @@
                         <td><img :src="'https://flagsapi.com/' + pays.codePays + '/flat/32.png'"></td>
                         <td>{{ pays.codePays }}</td>
                         <td>{{ pays.nomPays }}</td>
-                        <td> <a href="#" role="button" data-target="#modal" data-toggle="modal">Détails</a></td>                           
+                        <td><a href="#openModal" class="btn btn-outline-success">Détails</a></td>                           
                     </tr>
                 </tbody>
             </table>
         </div>
-        </section>
-        <aside id="modal" class="modal" role="dialog">
-            <div class="modal-content">            
-                <div class="modal-header"><a href="#" class="btn btn-close" role="button" data-dismiss="dialog"></a></div>
-                <div class="modal-body"></div>
-                <div class="modal-footer"></div>
-
+        </section>        
+        <div id="openModal" class="modalDialog">
+            <div>
+                <a href="#close" title="Close" class="close">Fermer</a>       
             </div>
-        </aside>        
+        </div>
+              
     </main>
     
 </body>

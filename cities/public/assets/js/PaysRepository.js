@@ -19,6 +19,9 @@ class PaysRepository
             throw error;
         }
     }
+
+    async getOnePays()
+
     
 }
 

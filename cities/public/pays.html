@@ -39,7 +39,7 @@
         </section>        
         <div id="modal" ref="modal">
             <article v-if="selectedPays != null">
-                <button id="btn" class="btn btn-outline-danger" @click="closeModal">Fermer</button>
+                <button id="btn" class="custom-button" @click="closeModal">Fermer</button>
                 <header>
                     <p>{{ selectedPays.nomPays }}</p>
                     <img :src="'https://flagsapi.com/' + selectedPays.codePays + '/flat/64.png'" :alt="selectedPays.codePays">

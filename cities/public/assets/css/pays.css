@@ -3,6 +3,11 @@ body {
     background-color: black;
 }
 
+header {
+  margin: 0;
+  padding: 0;
+}
+
 #app {
     display: flex;
     justify-content: center;
@@ -234,4 +239,14 @@ aside {
   #btn:hover::before {
     top: -30px;
     left: -30px;
+  }
+
+  .avion {
+    display: flex;
+  }
+
+  .plane {
+    width: 450px;
+    margin-top: 0;
+    padding: 0;
   }

@@ -19,21 +19,6 @@ class PaysRepository
             throw error;
         }
     }
-
-    async getOnePays()
-    {
-        try 
-        {
-            const response = await fetch(PaysRepository.apiBaseUrl + '/pays/' + id);
-            const data = await response.json();
-            return data;
-        }
-        catch (error)
-        {
-            console.error('Erreur récupération données depuis l\'API')
-            throw error;
-        }
-    }
     
 }
 
